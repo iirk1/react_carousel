@@ -16,7 +16,6 @@ const Carousel: React.FC<Props> = ({
   frameSize,
   itemWidth,
   animationDuration,
-  infinite,
 }) => {
   const [offset, setOffset] = useState(0);
 
