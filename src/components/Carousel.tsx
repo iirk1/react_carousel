@@ -16,6 +16,7 @@ const Carousel: React.FC<Props> = ({
   frameSize,
   itemWidth,
   animationDuration,
+  infinite,
 }) => {
   const [offset, setOffset] = useState(0);
 
@@ -56,6 +57,10 @@ const Carousel: React.FC<Props> = ({
         onClick={() => {
           if (offset + step * itemWidth <= 0) {
             setOffset(offset + step * itemWidth);
+          } else {
+            if (infinite) {
+              setOffset(offset - (images.length - frameSize) * itemWidth);
+            }
           }
         }}
       >
@@ -70,6 +75,10 @@ const Carousel: React.FC<Props> = ({
             -(images.length - frameSize) * itemWidth
           ) {
             setOffset(offset - step * itemWidth);
+          } else {
+            if (infinite) {
+              setOffset(0);
+            }
           }
         }}
       >

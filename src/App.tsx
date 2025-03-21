@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.scss';
 import Carousel from './components/Carousel';
 
@@ -7,6 +8,7 @@ interface State {
   frameSize: number;
   itemWidth: number;
   animationDuration: number;
+  infinite: boolean;
 }
 
 class App extends React.Component<{}, State> {
@@ -27,10 +29,11 @@ class App extends React.Component<{}, State> {
     frameSize: 3,
     step: 3,
     animationDuration: 1000,
+    infinite: false,
   };
 
   render() {
-    const { images, itemWidth, frameSize, step, animationDuration } =
+    const { images, itemWidth, frameSize, step, animationDuration, infinite } =
       this.state;
 
     return (
@@ -89,6 +92,17 @@ class App extends React.Component<{}, State> {
             type="number"
           />
         </label>
+        <label htmlFor="infiniteId">
+          {' '}
+          infinite
+          <input
+            checked={this.state.infinite}
+            id="infiniteId"
+            onChange={el => this.setState({ infinite: el.target.checked })}
+            name="infinite"
+            type="checkbox"
+          />
+        </label>
 
         <Carousel
           images={images}
@@ -96,6 +110,7 @@ class App extends React.Component<{}, State> {
           frameSize={frameSize}
           itemWidth={itemWidth}
           animationDuration={animationDuration}
+          infinite={infinite}
         />
       </div>
     );
