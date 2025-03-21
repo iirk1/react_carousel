@@ -39,9 +39,10 @@ const Carousel: React.FC<Props> = ({
           return (
             <li key={index}>
               <img
+                width={itemWidth}
                 data-cy="image"
                 style={{
-                  width: itemWidth + 'px',
+                  width: itemWidth,
                 }}
                 src={img}
                 alt={`Slide ${index}`}
